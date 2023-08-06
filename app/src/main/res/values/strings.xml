@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">DogAPI</string>
+    <string name="randomb_text">Случайная собака</string>
+</resources>
