@@ -6,6 +6,7 @@ import com.example.dogapi.formatting_to_json.CallToJSON
 import okhttp3.*
 import java.io.IOException
 
+
 class Callhttp(private val callback: (String) -> Unit) {
 
     private val handler = Handler(Looper.getMainLooper())
