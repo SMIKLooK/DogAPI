@@ -2,7 +2,9 @@ package com.example.dogapi
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Gravity
 import android.view.View
+import android.widget.Toast
 import com.example.dogapi.call.Callhttp
 import com.example.dogapi.databinding.ActivityMainBinding
 import com.squareup.picasso.Callback
@@ -38,8 +40,15 @@ class MainActivity : AppCompatActivity() {
             binding.progressBar.visibility = View.VISIBLE
             binding.randomButton.isClickable = false
 
+            val text = "Подождите загрузки изображения"
+            val duration = Toast.LENGTH_SHORT
 
+            val toast = Toast.makeText(applicationContext, text, duration)
+            toast.setGravity(Gravity.CENTER, 0, -400)
+            toast.show()
         }
+
+        imageLoader.loadImage()
 
         binding.randomButton.setOnClickListener {
             imageLoader.loadImage()
