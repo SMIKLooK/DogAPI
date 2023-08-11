@@ -26,7 +26,7 @@ class Callhttp(private val callback: (String) -> Unit) {
             }
 
             override fun onResponse(call: Call, response: Response) {
-                val responseBody= response.body?.string()
+                val responseBody = response.body?.string()
                 val imageUrl = CallToJSON().extractImageUrl(responseBody!!)
 
                 handler.post {

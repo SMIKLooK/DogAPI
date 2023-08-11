@@ -12,15 +12,15 @@ import com.example.dogapi.databinding.FragmentRandomDogBinding
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 
-private lateinit var binding: FragmentRandomDogBinding
 private lateinit var imageLoader: Callhttp
 
 
 class RandomDogFragment : Fragment() {
+    private lateinit var binding: FragmentRandomDogBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentRandomDogBinding.inflate(inflater)
 
         imageLoader = Callhttp() { imageUrl ->
@@ -46,7 +46,7 @@ class RandomDogFragment : Fragment() {
             val duration = Toast.LENGTH_SHORT
 
             val toast = Toast.makeText(context, text, duration)
-            toast.setGravity(Gravity.CENTER, 0, -400)
+            toast.setGravity(Gravity.CENTER, 0, -435)
             toast.show()
         }
 

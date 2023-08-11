@@ -4,9 +4,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.dogapi.databinding.ActivityMainBinding
 
-private lateinit var binding: ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -17,6 +17,9 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager
                 .beginTransaction()
                 .replace(R.id.frame_layout, RandomDogFragment()).commit()
+
+            binding.randomDog.isClickable = false
+            binding.dog10.isClickable = false
         }
     }
 }
