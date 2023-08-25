@@ -1,19 +1,20 @@
-package com.example.dogapi
+package com.example.dogapi.fragments
 
+import android.content.Context
 import android.os.Bundle
 import android.view.Gravity
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import com.example.dogapi.call.Callhttp
+import androidx.fragment.app.Fragment
+import com.example.dogapi.R
 import com.example.dogapi.databinding.FragmentRandomDogBinding
+import com.example.dogapi.get_data_from_API.RandomDogCall
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 
-private lateinit var imageLoader: Callhttp
-
+private lateinit var imageLoader: RandomDogCall
 
 class RandomDogFragment : Fragment() {
     private lateinit var binding: FragmentRandomDogBinding
@@ -23,7 +24,7 @@ class RandomDogFragment : Fragment() {
     ): View {
         binding = FragmentRandomDogBinding.inflate(inflater)
 
-        imageLoader = Callhttp() { imageUrl ->
+        imageLoader = RandomDogCall(this) { imageUrl ->
             Picasso.get().load(imageUrl)
                 .into(binding.commonImage, object : Callback {
                     override fun onSuccess() {
@@ -36,7 +37,6 @@ class RandomDogFragment : Fragment() {
                         binding.randomButton.isClickable = true
                         Picasso.get().load(R.drawable.placeholder).into(binding.commonImage)
                     }
-
                 })
 
             binding.progressBar.visibility = View.VISIBLE
@@ -50,6 +50,11 @@ class RandomDogFragment : Fragment() {
             toast.show()
         }
 
+        val filename = "myfile"
+        val fileContents = "Hello world!"
+        context?.openFileOutput(filename, Context.MODE_PRIVATE).use {
+            it?.write(fileContents.toByteArray())
+        }
         imageLoader.loadImage()
 
         binding.randomButton.setOnClickListener {

@@ -3,6 +3,7 @@ package com.example.dogapi
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.dogapi.databinding.ActivityMainBinding
+import com.example.dogapi.fragments.MainFragment
 
 
 class MainActivity : AppCompatActivity() {
@@ -13,13 +14,8 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        binding.randomDog.setOnClickListener {
-            supportFragmentManager
-                .beginTransaction()
-                .replace(R.id.frame_layout, RandomDogFragment()).commit()
-
-            binding.randomDog.isClickable = false
-            binding.dog10.isClickable = false
-        }
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.frame_layout, MainFragment())
+            .commit()
     }
 }
